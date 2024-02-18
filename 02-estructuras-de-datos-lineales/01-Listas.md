@@ -1,13 +1,16 @@
 # Listas
 
 ## Tipo de Dato Abstracto Lista
+
 Pueden implementarse se muchas formas. Las más comunes son:
+
 - **ArrayList**: Implementación mediante arreglos
 - **SinglyLinkedList**: Implementación mediante listas simples enlazadas
 - **DoubleLinkedList**: Implementación mediante listas doblemente enlazadas
 - **CircularLinkedList**: Implementación mediante listas enlazadas circulares
 
 ## Implementación mediante arreglos
+
 ```java
 public class ArrayList implements List {
     private int maxSize;
@@ -72,6 +75,7 @@ public class ArrayList implements List {
 - Una estrategia que se puede utilizar para evitar lanzar una excepción al llegar al tamaño máximo, es crear un nuevo array de mayor tamaño y copiar los elementos del array actual. Pero si tendrá un _hit_ de performance.
 
 ## Implementación mediante listas simples enlazadas
+
 > Todos los enfoques utilizando listas enlazadas utilizan memoria dinámica en vez de un arreglo, es decir, asigna memoria en el _heap_ cada vez que un elemento se agrega
 >
 > Dado que crea la memoria _justo en el momento_, cada elemento de la lista está separado en la memoria (a diferencia de un array donde todos los elementos están en memoria contigua)
@@ -83,12 +87,12 @@ public class ArrayList implements List {
   ![](../images/linked-list-1.png)
   - Como se puede notar, el último elemento apunta a _null_ indicando el fin de la lista
   - Es esencial llevar y mantener una referencia a la cabeza de la lista. Si la cabeza de la lista se pierde, se pierde toda la lista.
-  - Opcionalmente y para mejorar la eficiencia de la inserción al final, se puede llevar una referencia a la cola de la lista. Este tipo se conoce como *DoubleEndedLinkedList*.
-
+  - Opcionalmente y para mejorar la eficiencia de la inserción al final, se puede llevar una referencia a la cola de la lista. Este tipo se conoce como _DoubleEndedLinkedList_.
 
 ### Estructura general en Java
-```java	
-// No es public, es una clase interna para no exponer la clase nodo a 
+
+```java
+// No es public, es una clase interna para no exponer la clase nodo a
 // otras clases fuera del paquete
 class Node {
     int value;
@@ -171,13 +175,16 @@ public class SinglyLinkedList implements List {
 }
 
 ```
+
 ## Implementación mediante lista doblemente enlazada
+
 - La lista doblemente enlazada es similar a la lista simple enlazada, pero cada nodo tiene una referencia al nodo anterior y al siguiente
 - Visualmente, una lista doblemente enlazada se puede representar como:
   ![](../images/double-linked-list-1.png)
 - La ventaja sobre la lista simple enlazada es que se puede recorrer la lista en ambas direcciones. La desventaja es que cada nodo tiene que mantener una referencia adicional al nodo anterior, lo que consume más memoria e implica mayor complejidad en la implementación.
 
 ### Estructura general en Java
+
 ```java
 class Node {
     int value;
@@ -269,18 +276,22 @@ public class DoubleLinkedList implements List {
 }
 
 ```
+
 ### Aplicabilidad
+
 - Cuando se necesita recorrer la lista en ambas direcciones, por ejemplo, en un editor de texto, donde se necesita recorrer el texto hacia adelante y hacia atrás o en un navegador web, donde se necesita recorrer el historial de navegación hacia adelante y hacia atrás.
 
 ## Implementación mediante lista enlazada circular
-- La lista enlazada circular es similar a la lista simple enlazada, pero el último nodo apunta al primer nodo  
+
+- La lista enlazada circular es similar a la lista simple enlazada, pero el último nodo apunta al primer nodo
 - Visualmente, una lista enlazada circular se puede representar como:
   ![](../images/circular-linked-list-1.png)
-- Usualmente se implementan como cirular doblemente enlazada. 
-- Para mejorar las inserciones, en vez de mantener la referencia a *head* se utiliza una referencia a *tail* únicamente:
-![](../images/circular-linked-list-2.png)
+- Usualmente se implementan como cirular doblemente enlazada.
+- Para mejorar las inserciones, en vez de mantener la referencia a _head_ se utiliza una referencia a _tail_ únicamente:
+  ![](../images/circular-linked-list-2.png)
 
 ### Estructura general en Java
+
 ```java
 class Node {
     int value;
@@ -372,13 +383,14 @@ public class CircularSinglyLinkedList {
     }
 }
 ```
-### Aplicabilidad
-Cuando se necesita una lista que no tenga un final o un principio, por ejemplo, una lista de reproducción de música, donde la última canción apunta a la primera o una lista de tareas pendientes, donde la última tarea apunta a la primera.
 
+### Aplicabilidad
+
+Cuando se necesita una lista que no tenga un final o un principio, por ejemplo, una lista de reproducción de música, donde la última canción apunta a la primera o una lista de tareas pendientes, donde la última tarea apunta a la primera.
 
 ## Tabla comparativa de implementaciones
 
-| Implementación | Ventajas | Desventajas |
-| --------------- | -------- | ----------- |
-| ArrayList | - Acceso aleatorio rápido | - Inserciones y eliminaciones son costosas<br/>- Uso ineficiente de memoria (Un arreglo grande poco usado, sigue utilizando toda la memoria asignada) |
-| LinkedList | - Inserciones y eliminaciones son rápidas<br/>-Uso más eficiente de la memoria aunque cada nodo tiene un *overhead* adicional | - Acceso aleatorio a los elementos es costoso 
+| Implementación | Ventajas                                                                                                                      | Desventajas                                                                                                                                           |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ArrayList      | - Acceso aleatorio rápido                                                                                                     | - Inserciones y eliminaciones son costosas<br/>- Uso ineficiente de memoria (Un arreglo grande poco usado, sigue utilizando toda la memoria asignada) |
+| LinkedList     | - Inserciones y eliminaciones son rápidas<br/>-Uso más eficiente de la memoria aunque cada nodo tiene un _overhead_ adicional | - Acceso aleatorio a los elementos es costoso                                                                                                         |
