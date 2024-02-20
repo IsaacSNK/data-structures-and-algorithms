@@ -16,7 +16,10 @@
 
 Un heap tiene las siguientes operaciones:
 
-- **Insertar (insert)**: añade un elemento al heap,
+- **Insertar (insert)**: añade un elemento al heap y funciona de la siguinte manera:
+  1. Añade el elemento al final del array.
+  2. Compara el elemento con su padre y si es mayor, intercambia el elemento con su padre.
+  3. Repite el paso 2 hasta que el elemento sea menor que su padre o llegue a la raíz del heap.
 - **Eliminar (delete)**: elimina el nodo raíz del heap,
 - **Obtener (get)**: permite ver el nodo raíz del heap sin eliminarlo.
 
