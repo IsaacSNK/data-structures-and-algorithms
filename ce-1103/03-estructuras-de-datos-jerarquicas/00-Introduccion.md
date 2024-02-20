@@ -21,7 +21,7 @@ Existen muchos tipos de árboles, cada uno con sus propias características y ap
 
 A excepción de algunos árboles que puede implementarse con arreglos, la mayoría de los árboles se implementan con nodos enlazados, de forma similar a las _Listas_.
 
-## Termninología básica
+## Terminología básica
 
 ![Árbol binario](../images/trees-1.png)
 

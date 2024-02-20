@@ -7,7 +7,6 @@ Visualmente se pueden representar de la siguiente forma:
 
 ![Árbol B](../images/b-tree-1.png)
 
-
 ## Características
 Un árbol B de orden _m_, tiene las siguientes características:
 - Cada nodo se compone de llaves y ramas. Las llaves están ordenadas y dividen las ramas en el órden esperado. Por ejemplo, entre las llaves 15 y 20, hay un nodo hijo, cuyas llaves serán mayores a 15 pero menores a 20.

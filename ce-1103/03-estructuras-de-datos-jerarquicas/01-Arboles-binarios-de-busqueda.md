@@ -1,1 +1,166 @@
-## El problema de los BST de no ser balanceados
+# Introducción a Árboles Binarios de Búsqueda (BST)
+Un BST es un árbol binario que cumple con la siguiente propiedad: para cada nodo, todos los nodos del subárbol izquierdo tienen un valor menor que el nodo y todos los nodos del subárbol derecho tienen un valor mayor que el nodo.
+
+Gráficamente, un BST se ve de la siguiente forma:
+
+<pre>
+        8
+       / \
+      3   10
+     / \    \
+    1   6   14
+       / \  /
+      4   7 13
+</pre>
+
+Los BST se pueden implementar mediante arrays o nodos enlazados. En este curso, BST se verán como nodos enlazados. Los _árboles Heap_ que veremos más adelante, se implementarán con arrays.
+
+# Implementación
+La estructura básica de un BST se puede implementar de la siguiente forma:
+```java
+class TreeNode {
+    int key;
+    TreeNode left, right;
+
+    public TreeNode(int item) {
+        key = item;
+        left = right = null;
+    }
+}
+
+public class BinarySearchTree {
+    TreeNode root;
+
+    public BinarySearchTree() {
+        root = null;
+    }
+}
+```
+
+## Búsqueda de elementos
+```java
+    public boolean search(int key) {
+        return searchRecursive(root, key);
+    }
+
+    private boolean searchRecursive(TreeNode root, int key) {
+        if (root == null || root.key == key)
+            return root != null;
+
+        if (root.key < key)
+            return searchRecursive(root.right, key);
+
+        return searchRecursive(root.left, key);
+    }
+```
+
+> Dado que los árboles son una estructura jerárquica, la búsqueda se puede realizar de forma recursiva (preferida por simplicidad). De tal forma, la mayoría de los métodos van en parejas: _uno público que recibe los parámetros iniciales_ y _otro privado que realiza la operación recursiva_. 
+
+## Inserción de elementos
+La inserción usa el mismo principio de búsqueda para encontrar el lugar donde se debe insertar el nuevo nodo. **Si el nodo ya existe, no se inserta**.
+
+```java
+    public void insert(int key) {
+        root = insertRecursive(root, key);
+    }
+
+    private TreeNode insertRecursive(TreeNode root, int key) {
+        if (root == null) {
+            root = new TreeNode(key);
+            return root;
+        }
+
+        if (key < root.key)
+            root.left = insertRecursive(root.left, key);
+        else if (key > root.key)
+            root.right = insertRecursive(root.right, key);
+
+        return root;
+    }
+```
+Note que el método insert re-asigna el valor de root al resultado de insertRecursive. Esto es necesario para que los cambios hechos en el árbol se reflejen en la raíz. Un error de principiante es creer que el siguiente código funciona:
+
+```java
+    public void insert(int key) {
+        insertRecursive(root, key);
+    }
+
+    private void insertRecursive(TreeNode root, int key) {
+        if (root == null) {
+            root = new TreeNode(key);
+            return;
+        }
+
+        if (key < root.key)
+            insertRecursive(root.left, key);
+        else if (key > root.key)
+            insertRecursive(root.right, key);
+    }
+```
+No funciona puesto que **las referencias en Java se pasan por valor**. Esto significa que el valor de root no cambia en el método insert, por lo que el árbol no se modifica.
+
+## Eliminación de elementos
+La eliminación en un BST considera varios casos:
+- El nodo a eliminar es una hoja.
+- El nodo a eliminar tiene un solo hijo.
+- El nodo a eliminar tiene dos hijos.
+
+**Cuando el nodo es hoja**, simplemente se elimina. **Cuando el nodo tiene un solo hijo**, se reemplaza el nodo por su hijo. **Cuando el nodo tiene dos hijos**, se reemplaza el nodo por el nodo más pequeño del subárbol derecho o por el nodo mayor del súbarbol izquierdo (**solo se puede usar una de estas estrategias** en toda la implementación)
+
+```java
+    public void delete(int key) {
+        root = deleteRecursive(root, key);
+    }
+
+    private TreeNode deleteRecursive(TreeNode root, int key) {
+        if (root == null)
+            return root;
+
+        if (key < root.key)
+            root.left = deleteRecursive(root.left, key);
+        else if (key > root.key)
+            root.right = deleteRecursive(root.right, key);
+        else {
+            if (root.left == null)
+                return root.right;
+            else if (root.right == null)
+                return root.left;
+
+            root.key = minValue(root.right);
+            root.right = deleteRecursive(root.right, root.key);
+        }
+        return root;
+    }
+
+    private int minValue(TreeNode root) {
+        int minValue = root.key;
+        while (root.left != null) {
+            minValue = root.left.key;
+            root = root.left;
+        }
+        return minValue;
+    }
+```
+
+# El problema de los BST de no ser balanceados
+Los BST pueden degenerar en listas enlazadas si los elementos se insertan en orden. Esto puede ocurrir si los elementos se insertan en orden ascendente o descendente. En este caso, la búsqueda, inserción y eliminación se convierten en operaciones de tiempo lineal.
+
+<pre>
+        1
+         \
+          2
+           \
+            3
+             \
+              4
+               \
+                5
+                 \
+                  6
+                   \
+                    7
+                     \
+                      8
+                       \
+                        9
+</pre>                        
