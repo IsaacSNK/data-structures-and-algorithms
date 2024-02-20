@@ -6,9 +6,20 @@ Una pila es una estructura de datos lineal que sigue el principio de LIFO (del i
 
 La pila tiene dos operaciones básicas:
 
-- **Apilar (push)**: añade un elemento a la pila,
+- **Apilar (push)**: añade un elemento a la pila.
 - **Desapilar (pop)**: elimina el último elemento apilado.
 - **Tope (top)**: permite ver el elemento que está en la cima de la pila sin desapilarlo.
+
+<pre>
+| Before Push | After Push 3 | After Push 5 | After Pop | After Pop |
+|-------------|--------------|--------------|-----------|-----------|
+|             |              |   +---+      |           |           |
+|             |              |   | 5 |      |           |           |
+|             |   +---+      |   +---+      |   +---+   |           |
+|   +---+     |   | 3 |      |   | 3 |      |   | 3 |   |   +---+   |
+|   +---+     |   +---+      |   +---+      |   +---+   |   +---+   |
+</pre>
+
 
 ```java
 public interface IStack {

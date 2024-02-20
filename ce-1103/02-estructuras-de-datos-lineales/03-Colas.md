@@ -12,6 +12,36 @@ public interface IQueue {
 }
 ```
 
+Cola vacía:
+
+<pre>
+Frente -->  Cola Vacía  <-- Final
+</pre>
+
+Agregando elementos 1, 2, 3, 4 y 5:
+
+<pre>
+Frente --> [ 1 ] --> [ 2 ] --> [ 3 ] --> [ 4 ] --> [ 5 ] <-- Final
+</pre>
+
+Quitando un elemento:
+
+<pre>
+Frente --> [ 2 ] --> [ 3 ] --> [ 4 ] --> [ 5 ] <-- Final
+</pre>
+
+Agregando el elemento 6:
+
+<pre>
+Frente --> [ 2 ] --> [ 3 ] --> [ 4 ] --> [ 5 ] --> [ 6 ] <-- Final
+</pre>
+
+Quitando dos elementos:
+
+<pre>
+Frente --> [ 4 ] --> [ 5 ] --> [ 6 ] <-- Final
+</pre>
+
 ## Implementación de colas con arreglos
 
 ```java
