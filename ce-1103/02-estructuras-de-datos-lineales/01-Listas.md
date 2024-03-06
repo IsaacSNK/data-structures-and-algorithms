@@ -54,7 +54,7 @@ public class ArrayList implements List {
 
     public int remove(int element) {
         int i;
-        for (i = 0; i < this.maxSize; i++) {
+        for (i = 0; i < this.currentSize; i++) {
             if (this.storage[i] == element) {
                 indexToRemove = i;
             }
@@ -394,4 +394,3 @@ Cuando se necesita una lista que no tenga un final o un principio, por ejemplo, 
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ArrayList      | - Acceso aleatorio rápido                                                                                                     | - Inserciones y eliminaciones son costosas<br/>- Uso ineficiente de memoria (Un arreglo grande poco usado, sigue utilizando toda la memoria asignada) |
 | LinkedList     | - Inserciones y eliminaciones son rápidas<br/>-Uso más eficiente de la memoria aunque cada nodo tiene un _overhead_ adicional | - Acceso aleatorio a los elementos es costoso                                                                                                         |
-
