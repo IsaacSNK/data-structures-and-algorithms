@@ -142,6 +142,9 @@ La eliminación en un BST considera varios casos:
     }
 ```
 
+## Recorridos
+
+
 # El problema de los BST de no ser balanceados
 Los BST pueden degenerar en listas enlazadas si los elementos se insertan en orden. Esto puede ocurrir si los elementos se insertan en orden ascendente o descendente. En este caso, la búsqueda, inserción y eliminación se convierten en operaciones de tiempo lineal.
 

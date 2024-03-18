@@ -26,11 +26,40 @@ Un árbol B de orden _m_, tiene las siguientes características:
 
 ```java
 class BTreeNode {
-    int[] keys;
     int order;
+    int[] keys;
+    int keyCount;
     BTreeNode[] branches;
 }
 ```
+
+# Búsqueda
+Es muy similar a la búsqueda de un elemento en un BST. Los pasos se pueden resumir de la siguiente manera para buscar una llave _k_:
+
+1. Iniciando en la raíz, se compara _k_ con las llaves del nodo. Si _k_ se encuentra, se retorna el nodo o `true`. 
+2. Al ir comparando a _k_ con cada una de las llaves, si se encuentra alguna llave mayor a _k_ (o se llega al final de las llaves, osea _k_ es mayor que todas), y hay una rama para dicha llave, se desciende por esa rama y se repite el proceso.
+3. Si estamos en una rama, y no se encuentra _k_ en las llaves, se return `null` o `false`
+
+```java
+private Node Search(Node x, int key) {
+    int i = 0;
+    if (x == null)
+      return x;
+    for (i = 0; i < x.n; i++) {
+      if (key < x.key[i]) {
+        break;
+      }
+      if (key == x.key[i]) {
+        return x;
+      }
+    }
+    if (x.leaf) {
+      return null;
+    } else {
+      return Search(x.child[i], key);
+    }
+  }
+```  
 
 # Inserción
 
@@ -68,3 +97,26 @@ Graficamente se puede ver de la siguiente manera (orden 5):
 > Varios elementos después...:
 
 ![Árbol B](../images/b-tree-insertion-4.png)
+
+# Eliminación
+Eliminar en un árbol B consiste de:
+1. Encontrar el nodo que contiene la llave a eliminar.
+2. Eliminar la llave del nodo.
+3. Balancear el árbol para 
+
+## Caso #1 - El nodo es hoja
+En este caso, la llave por eliminar está en un nodo _hoja_. Hay dos sub-casos:
+ 
+*1.1* El nodo tiene más de _m-1_ llaves. En este caso, simplemente se elimina la llave.
+
+Por ejemplo en este árbol de orden 3:
+
+![Árbol B](../images/b-tree-deletion-1.png)
+
+*1.2* El nodo tiene _m-1_ llaves. En este caso, se _pide prestado_ una llave de uno de los nodos hermanos. Primero se visita el hermano izquierdo. Si el hermano izquierdo tiene más de _m-1_ llaves, se toma la llave más grande del hermano izquierdo Si no, se chequea el hermano derecho
+
+![Árbol B](../images/b-tree-deletion-2.png)
+
+Si los dos hermanos tienen _m-1_ llaves, se fusionan los nodos y se elimina la llave del nodo padre. La mezcla de los nodos se haces mediante el nodo padre.
+
+https://www.programiz.com/dsa/deletion-from-a-b-tree#google_vignette
