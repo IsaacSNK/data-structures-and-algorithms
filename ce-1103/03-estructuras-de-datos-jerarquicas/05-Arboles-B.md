@@ -119,4 +119,20 @@ Por ejemplo en este árbol de orden 3:
 
 Si los dos hermanos tienen _m-1_ llaves, se fusionan los nodos y se elimina la llave del nodo padre. La mezcla de los nodos se haces mediante el nodo padre.
 
-https://www.programiz.com/dsa/deletion-from-a-b-tree#google_vignette
+![Árbol B](../images/b-tree-deletion-3.png)
+
+## Caso #2 - El nodo es interno
+Si la llave por eliminar está dentro de un nodo interno, los siguientes casos pueden ocurrir:
+
+*2.1* La llave eliminada se reemplaza por la llave inmediatamente mayor (o menor) del sub-árbol derecho (o izquierdo) del nodo, siuempre y cuando el sub-árbol derecho (o izquierdo) más del mínimo de llaves.
+
+![Árbol B](../images/b-tree-deletion-4.png)
+
+*2.2* Si ninguno de los hijos izquierdo o derecho tiene más de _m-1_ llaves, se fusionan los nodos y se elimina la llave del nodo padre.
+
+![Árbol B](../images/b-tree-deletion-5.png)
+
+## Caso #3
+La eliminación ocurre en un nodo interno. Si no se puede realizar el caso #2 (anterior), se unen los hijos junto con el padre. 
+
+![Árbol B](../images/b-tree-deletion-6.png)
