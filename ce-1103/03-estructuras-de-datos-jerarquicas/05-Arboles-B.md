@@ -64,3 +64,7 @@ Graficamente se puede ver de la siguiente manera (orden 5):
 > Varios elementos después:
 
 ![Árbol B](../images/b-tree-insertion-3.png)
+
+> Varios elementos después...:
+
+![Árbol B](../images/b-tree-insertion-4.png)
