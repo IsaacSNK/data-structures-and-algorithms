@@ -143,7 +143,97 @@ La eliminación en un BST considera varios casos:
 ```
 
 ## Recorridos
+Recorrer un árbol no solo es útil para imprimirlo, sino que también es útil para realizar operaciones en todos los nodos. Los recorridos más comunes son:
 
+- Inorden (izquierda, raíz, derecha)
+- Preorden (raíz, izquierda, derecha)
+- Postorden (izquierda, derecha, raíz)
+
+```java
+    public void inOrder() {
+        inOrderRecursive(root);
+    }
+
+    private void inOrderRecursive(TreeNode root) {
+        if (root != null) {
+            inOrderRecursive(root.left);
+            System.out.print(root.key + " ");
+            inOrderRecursive(root.right);
+        }
+    }
+
+    public void preOrder() {
+        preOrderRecursive(root);
+    }
+
+    private void preOrderRecursive(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.key + " ");
+            preOrderRecursive(root.left);
+            preOrderRecursive(root.right);
+        }
+    }
+
+    public void postOrder() {
+        postOrderRecursive(root);
+    }
+
+    private void postOrderRecursive(TreeNode root) {
+        if (root != null) {
+            postOrderRecursive(root.left);
+            postOrderRecursive(root.right);
+            System.out.print(root.key + " ");
+        }
+    }
+```
+
+### In-orden
+El recorrido in-orden de un árbol BST imprime los nodos en *orden ascendente*. Esto se debe a que el recorrido in-orden visita primero el subárbol izquierdo, luego la raíz y finalmente el subárbol derecho. 
+
+Por ejemplo, el siguiente árbol:
+
+<pre>
+        8
+       / \
+      3   10
+     / \    \
+    1   6   14
+       / \  /
+      4   7 13
+</pre>
+
+Se imprime como `1 3 4 6 7 8 10 13 14`.
+
+## Pre-orden
+El recorrido pre-orden de un árbol BST imprime la raíz antes que los subárboles. Esto se debe a que el recorrido pre-orden visita primero la raíz, luego el subárbol izquierdo y finalmente el subárbol derecho.
+
+<pre>
+        8
+       / \
+      3   10
+     / \    \
+    1   6   14
+       / \  /
+      4   7 13
+</pre>
+
+Se imprime como `8 3 1 6 4 7 10 14 13`.
+
+
+## Post-orden
+El recorrido post-orden de un árbol BST imprime los subárboles antes que la raíz. Esto se debe a que el recorrido post-orden visita primero el subárbol izquierdo, luego el subárbol derecho y finalmente la raíz.
+
+<pre>
+        8
+       / \
+      3   10
+     / \    \
+    1   6   14
+       / \  /
+      4   7 13
+</pre>
+
+Se imprime como `1 4 7 6 3 13 14 10 8`.
 
 # El problema de los BST de no ser balanceados
 Los BST pueden degenerar en listas enlazadas si los elementos se insertan en orden. Esto puede ocurrir si los elementos se insertan en orden ascendente o descendente. En este caso, la búsqueda, inserción y eliminación se convierten en operaciones de tiempo lineal.
