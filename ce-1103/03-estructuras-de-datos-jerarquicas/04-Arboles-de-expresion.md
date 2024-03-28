@@ -28,9 +28,13 @@ private void inOrderRecursive(TreeNode root) {
 }
 ```
 
-| Árbol                                      | Expresión           |
-| ------------------------------------------ | ------------------- |
-| ![](../images/expression-tree-1.png =100x) | `(x + y) * (a - b)` |
+| Árbol                                                   | Expresión                 |
+| ------------------------------------------------------- | ------------------------- |
+| <img src="../images/expression-tree-1.png" width="200"> | `(x + y) * (a - b)`       |
+| <img src="../images/expression-tree-2.png" width="200"> | `(x * (y - z)) * (a - f)` |
+| <img src="../images/expression-tree-3.png" width="200"> | `(x * (y / -Z))`          |
+| <img src="../images/expression-tree-4.png" width="200"> | `(A + (B * - (C + D)))`   |
+| <img src="../images/expression-tree-5.png" width="200"> | `((A * (X + Y)) * C)`     |
 
 # Conversión de expresión a árbol de expresión
 
@@ -47,34 +51,20 @@ El algoritmo utiliza dos estructuras de datos: una pila para almacenar los opera
 
 Por ejemplo,
 
-```
-( a + ( b * c ) )
-^
+<img src="../images/expression-tree-6.png" width="200">
 
-cola:
-pila: (
-```
+<img src="../images/expression-tree-7.png" width="200">
 
-```
-( a + ( b * c ) )
-  ^
+<img src="../images/expression-tree-8.png" width="200">
 
-cola: a
-pila: (
-```
+<img src="../images/expression-tree-9.png" width="200">
 
-```
-( a + ( b * c ) )
-    ^
+La cola (que contiene la expresión en postfijo) se utiliza como input para generar el árbol de expresión.
 
-cola: a
-pila: ( +
-```
+<img src="../images/expression-tree-10.png" width="200">
 
-```
-( a + ( b * c ) )
-            ^
+<img src="../images/expression-tree-11.png" width="200">
 
-cola: a b c
-pila: ( + ( *
-```
+<img src="../images/expression-tree-12.png" width="200">
+
+<img src="../images/expression-tree-13.png" width="200">
