@@ -16,7 +16,7 @@ backtrack(x) {
         if (nodo == solution) {
             return true;
         } else {
-            backtrack(nodo);
+            return backtrack(nodo);
         }
         
     }
