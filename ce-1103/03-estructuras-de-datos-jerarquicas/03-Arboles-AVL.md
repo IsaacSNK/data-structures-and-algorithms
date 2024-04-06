@@ -47,7 +47,7 @@ Factores de balance de cada nodo:
 - Requieren más memoria que los árboles binarios de búsqueda no balanceados.
 - Las operaciones de inserción y eliminación son más lentas que en los árboles binarios de búsqueda no balanceados.
 - Las rotaciones pueden ser costosas.
-- Difficiles de implementar.
+- Difíciles de implementar.
 
 # Inserción
 Para insertar un nodo _w_: 
