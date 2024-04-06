@@ -92,7 +92,7 @@ Considere el problema de las n-reinas. La solución clásica es mediante backtra
 
 Considere el siguiente escenario:
 
-    > La página de regitro de usuarios de un sitio web, permite al usuario especificar un _username_. No se permiten _username_ duplicados. ¿Cómo se puede verificar si un _username_ ya existe?
+> La página de regitro de usuarios de un sitio web, permite al usuario especificar un _username_. No se permiten _username_ duplicados. ¿Cómo se puede verificar si un _username_ ya existe?
 
 Algunas posible soluciones serían:
 
