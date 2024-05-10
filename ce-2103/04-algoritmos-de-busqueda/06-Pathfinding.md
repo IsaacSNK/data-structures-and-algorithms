@@ -84,6 +84,7 @@ Dependiendo del escenario, la heurística puede ser precalculada y almacenada en
 A* y Dijkstra son similares, pero A* es más rápido porque la heurística guía la búsqueda hacia el destino. La visualización [aquí](https://www.redblobgames.com/pathfinding/a-star/introduction.html#astar) permite compararlas.
 
 Aunque A* y Dijkstra encuentran el camino, la cantidad de comparaciones realizadas por A* es mucho menor. En el peor caso, A* es igual a Dijkstra, pero en el mejor caso, A* es mucho más rápido.
+e
 
 # Referencias
 
