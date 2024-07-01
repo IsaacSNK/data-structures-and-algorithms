@@ -4,7 +4,7 @@
 
 ## Punteros
 
-- La memoria se puede representar como celdas o filas
+- La memoria se puede representar como celdas o filas. 
 
 | Direccion | Valor |
 | --------- | ----- |
